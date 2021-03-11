@@ -1,5 +1,7 @@
 ;; we can require features
 
+(setq byte-compile-warnings '(cl-functions))
+
 (require 'cl)
 (require 'package)
 
@@ -10,9 +12,14 @@
 (add-hook 'emacs-startup-hook 'startup/reset-gc)
 
 ;; add mirrors for list-packages
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; needed to use things downloaded with the package manager
 (package-initialize)
 
@@ -192,8 +199,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (emmet-mode go-mode omnisharp company tide flycheck web-mode add-node-modules-path prettier-js rjsx-mode js-auto-beautify auctex xref-js2 js2-refactor js2-mode undo-tree multiple-cursors afternoon-theme ido-vertical-mode auto-complete)))
+   '(csharp-mode emmet-mode go-mode omnisharp company tide flycheck web-mode add-node-modules-path prettier-js rjsx-mode js-auto-beautify auctex xref-js2 js2-refactor js2-mode undo-tree multiple-cursors afternoon-theme ido-vertical-mode auto-complete))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -207,12 +213,12 @@
 (setq ring-bell-function #'ignore)
 
 ;; Fix for mac keyboard
-(setq default-input-method "MacOSX")
+;;(setq default-input-method "MacOSX")
 
-(setq mac-command-modifier 'meta
-      mac-option-modifier nil
-      mac-allow-anti-aliasing t
-      mac-command-key-is-meta t)
+;;(setq mac-command-modifier 'meta
+;;      mac-option-modifier nil
+;;      mac-allow-anti-aliasing t
+;;      mac-command-key-is-meta t)
 
 (defun setup-tide-mode ()
   "Setup function for tide."
