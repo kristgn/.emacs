@@ -145,7 +145,10 @@
   (set (make-variable-buffer-local 'compile-command)
        (concat "javac " (buffer-name)))
   (local-set-key (kbd "C-c C-c") 'compile)
-  (local-set-key (kbd "<Scroll_Lock>") 'compile))
+  (local-set-key (kbd "<Scroll_Lock>") 'compile)
+  (setq c-basic-offset 4
+        tab-width 4
+        indent-tabs-mode t))
 
 ;; this is a java-spesific function, so we only load it when entering
 ;; java-mode
