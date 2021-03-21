@@ -1,5 +1,6 @@
 ;; we can require features
 
+;; remove deprecation warning
 (setq byte-compile-warnings '(cl-functions))
 
 (require 'cl)
@@ -42,6 +43,9 @@
 ;; set tab width to 4 spaces
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+
+;; set font to menlo
+(set-face-attribute 'default nil :font "Menlo" :height 140)
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
