@@ -346,3 +346,7 @@
      ((t :background "#4581b3")))
    `(company-scrollbar-bg
      ((t :background "#F8F8F0")))))
+
+;; prevents emacs-mac port loosing focus when switching screens
+;; M-x menu-bar-mode to manually enable it
+(menu-bar-mode 1)
