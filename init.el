@@ -318,34 +318,15 @@
             (setq python-indent-offset 4)))
 (put 'downcase-region 'disabled nil)
 
-(deftheme afternoon-overrides)
-(let ((class '((class color) (min-colors 257)))
-      (terminal-class '((class color) (min-colors 89))))
-  (custom-theme-set-faces
-   'afternoon-overrides
-   ;; Company tweaks.
-   `(company-tooltip
-     ((t :foreground "black"
-         :background "#d3d3d2"
-         :underline nil)))
-   `(company-tooltip-selection
-     ((t :background "#4581b3"
-         :foreground "#F8F8F0")))
-   `(company-tooltip-annotation
-     ((t :inherit company-tooltip)))
-   `(company-tooltip-annotation-selection
-     ((t :inherit company-tooltip-selection)))
-   `(company-preview
-     ((t :inherit company-tooltip-selection)))
-   `(company-preview-common
-     ((t :inherit company-tooltip)))
-   `(company-tooltip-search
-     ((t :background "#349b8d"
-         :foreground "#F8F8F0")))
-   `(company-scrollbar-fg
-     ((t :background "#4581b3")))
-   `(company-scrollbar-bg
-     ((t :background "#F8F8F0")))))
+(require 'color)
+  
+  (let ((bg (face-attribute 'default :background)))
+    (custom-set-faces
+     `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+     `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+     `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+     `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+     `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
 ;; prevents emacs-mac port loosing focus when switching screens
 ;; M-x menu-bar-mode to manually enable it
